@@ -13,4 +13,4 @@ An Emacs flymake handler for Golang source code.
   (add-hook 'go-mode-hook 'flymake-golangci-load)
 #+end_src
 
-Uses flymake-easy, from https://github.com/purcell/flymake-easy
+Uses flymake-easy, from [[https://github.com/purcell/flymake-easy][https://github.com/purcell/flymake-easy]]
