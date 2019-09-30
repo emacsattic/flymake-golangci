@@ -1,0 +1,16 @@
+* flymake-golangci
+An Emacs flymake handler for Golang source code.
+
+** Installation
+*** With straight.el
+#+begin_src emacs-lisp
+  (straight-use-package
+   '(flymake-golangci :type git :host gitlab :repo "shackra/flymake-golangci"))
+#+end_src
+** Usage
+#+begin_src emacs-lisp
+  (require 'flymake-golanci)
+  (add-hook 'go-mode-hook 'flymake-golangci-load)
+#+end_src
+
+Uses flymake-easy, from https://github.com/purcell/flymake-easy
