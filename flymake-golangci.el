@@ -65,7 +65,7 @@
   "Timeout for running golangci-lint.")
 
 (defcustom flymake-golangci-tests nil
-  "Analyze *_test.go files"
+  "Analyze *_test.go files."
   :safe #'booleanp
   :type 'boolean)
 
