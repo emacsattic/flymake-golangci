@@ -49,8 +49,13 @@
 (require 'rx)
 
 (defconst flymake-golangci-err-line-patterns
-  `(,(rx bol (group (one-or-more (any alnum punct))) ":" (group (one-or-more digit)) ":" (group (one-or-more digit)) ": " (group (one-or-more (any alnum blank digit))) line-end)
-    ,(rx bol (group (one-or-more (any alnum punct))) ":" (group (one-or-more digit)) ":" (group (one-or-more (any alnum blank digit))) line-end)))
+  `(,(rx bol (group (one-or-more (any alnum punct)))
+         ":" (group (one-or-more digit))
+         ":" (group (one-or-more digit))
+         ": " (group (one-or-more (any alnum blank digit))) line-end)
+    ,(rx bol (group (one-or-more (any alnum punct)))
+         ":" (group (one-or-more digit))
+         ":" (group (one-or-more (any alnum blank digit))) line-end)))
 
 (defcustom flymake-golangci-executable "golangci-lint"
   "The Golang CI lint executable to use for syntax checking."
