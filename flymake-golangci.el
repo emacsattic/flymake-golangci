@@ -1,11 +1,12 @@
 ;;; flymake-golangci.el --- A flymake handler for go-mode files using Golang CI lint
+;; -*- lexical-binding: t; -*-
 
 ;; Copyright (c) 2019 Jorge Javier Araya Navarro
 
 ;; Author: Jorge Javier Araya Navarro <jorgejavieran@yahoo.com.mx>
 ;; URL: https://gitlab.com/shackra/flymake-golangci
-;; Package-Version: 0
-;; Package-Requires: ((flymake-easy "0.1"))
+;; Version: 0
+;; Package-Requires: ((flymake-easy "0.1") (emacs "24"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -18,7 +19,7 @@
 ;; GNU General Public License for more details.
 
 ;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -57,40 +58,52 @@
          ":" (group (one-or-more digit))
          ":" (group (one-or-more (any alnum blank digit))) line-end)))
 
+(defgroup flymake-golangci nil "flymake-golangci preferences." :group 'flymake-golanci)
+
 (defcustom flymake-golangci-executable "golangci-lint"
   "The Golang CI lint executable to use for syntax checking."
-  :safe #'stringp)
+  :safe #'stringp
+  :type 'string
+  :group 'flymake-golangci)
 
 (defcustom flymake-golangci-deadline "1m"
-  "Timeout for running golangci-lint.")
+  "Timeout for running golangci-lint."
+  :type 'string
+  :group 'flymake-golangci)
 
 (defcustom flymake-golangci-tests nil
   "Analyze *_test.go files."
   :safe #'booleanp
-  :type 'boolean)
+  :type 'boolean
+  :group 'flymake-golangci)
 
 (defcustom flymake-golangci-fast nil
   "Run only fast linters."
   :safe #'booleanp
-  :type 'boolean)
+  :type 'boolean
+  :group 'flymake-golangci)
 
 (defcustom flymake-golangci-disable-all nil
   "Disable all linters."
   :safe #'booleanp
-  :type 'boolean)
+  :type 'boolean
+  :group 'flymake-golangci)
 
 (defcustom flymake-golangci-enable-all nil
   "Enable all linters."
   :safe #'booleanp
-  :type 'boolean)
+  :type 'boolean
+  :group 'flymake-golangci)
 
 (defcustom flymake-golangci-enable-linters nil
   "Enable some linters."
-  :type '(repeat (string :tag "linter")))
+  :type '(repeat (string :tag "linter"))
+  :group 'flymake-golangci)
 
 (defcustom flymake-golangci-disable-linters nil
   "Disable some linters."
-  :type '(repeat (string :tag "linter")))
+  :type '(repeat (string :tag "linter"))
+  :group 'flymake-golangci)
 
 (defun flymake-golangci-command (filename)
   "Construct a command that flymake can use to check golang source in FILENAME."
